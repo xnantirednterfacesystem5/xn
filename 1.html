@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
-  <meta charset="UTF-8"> <!-- 添加字符编码声明 -->
+  <meta charset="UTF-8">
   <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport">
   <meta content="yes" name="apple-mobile-web-app-capable">
   <meta content="yes" name="apple-touch-fullscreen">
@@ -288,7 +287,7 @@
     }
    .content{height:100%;width:100%;position: fixed;left: -2px;top: -2px;}
    
-   /* 添加未授权提示样式 */
+
    .unauthorized-message {
        display: none;
        position: absolute;
@@ -304,7 +303,7 @@
        width: 90%;
    }
    
-   .unauthorized-message h2 {
+   .unauthorized-message h1 {
        color: #e74c3c;
        margin-bottom: 15px;
    }
@@ -337,22 +336,25 @@
             <div class="dot dot-2"></div>
             <div class="dot dot-3"></div>
 </div>
-
-<!-- 添加未授权提示元素 -->
 <div class="unauthorized-message" id="unauthorizedMessage">
-    <h2>访问未授权</h2>
-    <p>抱歉，您尝试访问的防红接口未授权域名。请联系TG：xnkeji 添加</p>
+    <h1></h1>
+    <h2></h2>
+    <h3></h3>
     <button onclick="location.reload()">刷新页面</button>
 </div>
-
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('#unauthorizedMessage h1').innerText = decodeURIComponent(escape(atob('5Z+f5ZCN5pyq5o6I5p2DL+WIsOacnw==')));
+        document.querySelector('#unauthorizedMessage h2').innerText = decodeURIComponent(escape(atob('6K+36IGU57O75bCP5bm077yM6LSt5LmwL+e7rei0ueaOiOadgw==')));
+        document.querySelector('#unauthorizedMessage h3').innerText = decodeURIComponent(escape(atob('5bCP5bm0VEfvvJp4bmtlamk=')));
+    });
+</script>
  <script>
- 
-const encryptedValidateUrl = "aHR0cHM6Ly9hei5rYWxpeG4uY24vdmFsaWRhdGVfZG9tYWluLnBocA==";
+const encryptedValidateUrl = "aHR0cHM6Ly9hYXhuLmNuL3ZhbGlkYXRlX2RvbWFpbi5waHA=";
 
 function decryptUrl(encryptedUrl) {
     return atob(encryptedUrl);
 }
-
 var liugao = new URLSearchParams(window.location.search);
 var encodedParam = liugao.get('c');
 var liu = atob(encodedParam);
@@ -377,14 +379,13 @@ if (liu.includes("http")) {
         document.writeln(html);
         console.log(liu);
     } else {
-        // 隐藏加载动画，显示未授权提示
         var container = document.querySelector('.container');
         container.style.display = 'none';
         
         var unauthorizedMessage = document.getElementById('unauthorizedMessage');
         unauthorizedMessage.style.display = 'block';
         
-        console.log("域名不在白名单中，无法使用。");
+        console.log("");
     }
 } else {
     console.log("nourls");
@@ -408,33 +409,23 @@ function bindMouseWhee(ifr){
 }
 </script>
   <script type="text/javascript">
-        // 禁止右键点击
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         });
-        
-        // 禁止F12键
         document.addEventListener('keydown', function(e) {
-            // F12键的keyCode是123
             if (e.keyCode === 123) {
                 e.preventDefault();
             }
-            // 禁止Ctrl+Shift+I
             if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
                 e.preventDefault();
             }
-            // 禁止Ctrl+U (查看源代码)
             if (e.ctrlKey && e.keyCode === 85) {
                 e.preventDefault();
             }
         });
-        
-        // 防止通过浏览器菜单打开开发者工具的简单防护
-        // 这不能完全阻止，但可以增加难度
         window.ondevtoolschange = function(open) {
             if (open) {
-                window.close(); // 如果打开了开发者工具，关闭页面
-                // 或者可以使用 location.reload() 刷新页面
+                window.close(); 
             }
         };
     </script>
